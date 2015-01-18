@@ -1,5 +1,7 @@
 <?php
 
+use App\Repositories\BookRepository;
+
 Book::created(
     function($book) {
         $client = new Elasticsearch\Client();
@@ -31,7 +33,7 @@ Book::updated(
 Book::deleted(
     function($book) {
         $client = new Elasticsearch\Client();
-        $client->deletex(
+        $client->delete(
             [
                 'index' => 'elasticplay',
                 'type' => 'book',
@@ -44,9 +46,12 @@ Book::deleted(
 Route::get(
     '/',
     function() {
-        $book = new Book();
-        $book->title = "test";
-        $book->body = "hello";
-        $book->save();
+        $book = new BookRepository();
+        $book->create(
+            [
+                'title' => 'test2',
+                'body' => 'hello2'
+            ]
+        );
     }
 );
