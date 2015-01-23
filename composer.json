@@ -6,7 +6,8 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "4.2.*",
-		"elasticsearch/elasticsearch": "~1.0"
+		"elasticsearch/elasticsearch": "~1.0",
+		"phpunit/phpunit": "4.4.2"
 	},
 	"autoload": {
 		"classmap": [
